@@ -78,8 +78,19 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- Harpoon https://github.com/ThePrimeagen/harpoon
-  'ThePrimeagen/harpoon',
+  {
+    'ThePrimeagen/harpoon',
+    opts = {
+      menu = { width = vim.api.nvim_win_get_width(0) - 40 }
+    }
+  },
 
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+  },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -134,19 +145,29 @@ require('lazy').setup({
           { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        vim.keymap.set('n', '<leader>tgb', require('gitsigns').toggle_current_line_blame,
+          { buffer = bufnr, desc = '[T]oggle [G]it [B]lame' })
       end,
     },
   },
 
-  {
+  --[[ {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
-  },
+  }, ]]
 
+  {
+    -- Theme inspired by Atom
+    'rose-pine/neovim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'rose-pine'
+    end,
+  },
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',

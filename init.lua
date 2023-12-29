@@ -85,12 +85,12 @@ require('lazy').setup({
     }
   },
 
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
-  },
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons'
+  --   },
+  -- },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -160,14 +160,28 @@ require('lazy').setup({
     end,
   }, ]]
 
-  {
+  --[[ {
     -- Theme inspired by Atom
     'rose-pine/neovim',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'rose-pine'
     end,
+  }, ]]
+
+  -- colorscheme
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true;
+    },
+    config = function()
+      vim.cmd.colorscheme 'solarized-osaka'
+    end,
   },
+
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',

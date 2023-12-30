@@ -68,8 +68,8 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  'tpope/vim-fugitive', -- :Git extenstion
+  'tpope/vim-rhubarb',  -- :GBrowse
 
   -- Git diff side by side view
   'sindrets/diffview.nvim',
@@ -175,7 +175,7 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true;
+      transparent = true,
     },
     config = function()
       vim.cmd.colorscheme 'solarized-osaka'
@@ -308,6 +308,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -447,6 +448,9 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_set_keymap('n', '<leader>ht', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', { noremap = true })
   vim.api.nvim_set_keymap('n', '<leader>m', ':lua require("harpoon.mark").add_file()', { noremap = true })
 
+  vim.api.nvim_set_keymap('n', '<C-x>', ':split', { noremap = false })
+  vim.api.nvim_set_keymap('n', '<C-v>', ':vsplit', { noremap = false })
+
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
@@ -563,4 +567,4 @@ cmp.setup {
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=1 sts=2 sw=2 et

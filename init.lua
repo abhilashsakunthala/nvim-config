@@ -72,7 +72,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',  -- :GBrowse
 
   -- Git diff side by side view
-  'sindrets/diffview.nvim',
+  -- 'sindrets/diffview.nvim',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -85,12 +85,12 @@ require('lazy').setup({
     }
   },
 
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons'
-  --   },
-  -- },
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+  },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -147,6 +147,7 @@ require('lazy').setup({
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
         vim.keymap.set('n', '<leader>tgb', require('gitsigns').toggle_current_line_blame,
           { buffer = bufnr, desc = '[T]oggle [G]it [B]lame' })
+        vim.keymap.set('n', '<leader>hd', require('gitsigns').diffthis, { buffer = bufnr, desc = '[H]ighlight [D]ifference' })
       end,
     },
   },
@@ -246,7 +247,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.nu = true
@@ -567,4 +568,4 @@ cmp.setup {
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=1 sts=2 sw=2 et
+
